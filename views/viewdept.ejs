@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="/ajax.js"></script> 
+     <style>
+
+        
+     </style>
+
+</head>
+<body>
+    <%- include("home.ejs") %>
+    <br><br>
+<div class="container p-5 bg-dark">
+<div class="form-group">
+<input type="text" name="name" value="" class="form-control" placeholder="Search Department" onkeyup="searchDept(this.value)">
+</div>
+
+
+
+<table class="table table-info ">
+    <tr>
+        <th>SR NO</th>
+        <th>DEPT NAME</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tbody id="tblBody">
+<%
+deptList.forEach((row,index)=>{
+    %>
+    <tr>
+        <td><%=index+1 %></td>
+        <td><%=row.deptname %></td>
+       <td><a href="/deldept?did=<%=row.deptid%>">DELETE</a></td>
+       <td><a href="/upddate?dn=<%= row.deptname %>&did=<%=row.deptid%>">UPDATE</a></td>
+
+    </tr>
+    <%
+});
+%>
+</tbody>
+</table>
+
+</div>
+</body>
+</html>

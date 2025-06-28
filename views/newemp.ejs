@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+    
+<%- include("home.ejs") %>
+<div class="container mt-2 bg-info p-5">
+    <form  name="frm" action="/saveemp" method="post" enctype="multipart/form-data">
+        <h1 style="text-align:center;"><u>ADD EMPLOYEES DATA : </u></h1><br>
+    <div class="form-group"> 
+            <input type="text" name="name" value="" class="form-control" placeholder="Enter Name" >
+    </div>
+    
+    <div class="form-group">      
+        <input type="text" name="email" value="" class="form-control" placeholder="Enter Email" onblur="checkEmailExisting(this.value)">
+        <!-- <label for="text-white" id="labelMsg "> </label>
+ -->
+        </div>
+
+    <div class="form-group"> 
+            <input type="text" name="contact" value="" class="form-control" placeholder="Enter contact" >
+    </div>
+
+    <div class="form-group"> 
+            <input type="text" name="sal" value="" class="form-control" placeholder="Enter Salary" >
+    </div>
+
+    <div class="form-group"> 
+            <input type="file" name="photo" value="" class="form-control" placeholder="Enter photo" >
+    </div>
+
+    <div class="form-group"> 
+  <select name="deptid" id="" class="form-control">
+    <option>Choose Department</option>
+    <% 
+       deptList.forEach((deptData, index) => {
+        %>
+      <option value="<%= deptData.deptid %>"> <%= deptData.deptname %> </option>
+    <% 
+      });
+ %>
+  </select>
+</div>
+
+    <div class="form-group"> 
+            <input type="submit" name="s" value="Add New Employee" class="form-control" placeholder="" >
+    </div>
+
+      <%
+   if(msg.length!=0)
+   {
+  %>
+   
+   <div class="alert alert-success" role="alert">
+     <%=msg%>
+    </div>
+    <%
+}
+%>
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
